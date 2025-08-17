@@ -1,0 +1,239 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "equipmentsBase", 
+    "description": "Shema of data structure for the equipments that the characters can equip in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the equipment", 
+            "type": "string"
+        },
+        "Type": { 
+            "description": "The category of the equipment", 
+            "type": "string",
+            "enum":["All", "Helmet", "Armor", "Pants", "Boots", "Gauntlet", "Belt", "Necklace", "Ring", "Shield"]
+        },
+        "Restriction": { 
+            "description": "Other kind of restriction to equip this equipment", 
+            "type": "string"
+        },
+        "Strength": { 
+            "description": "The bonus Strength provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Intelligence": { 
+            "description": "The bonus Intelligence provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Constitution": { 
+            "description": "The bonus Constitution provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Charisma": { 
+            "description": "The bonus Charisma provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Dexterity": { 
+            "description": "The bonus Dexterity provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Agility": { 
+            "description": "The bonus Agility provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Perception": { 
+            "description": "The bonus Perception provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Power": { 
+            "description": "The bonus Power provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseRange": { 
+            "description": "The bonus Defense Range provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseMelee": { 
+            "description": "The bonus Defense Melee provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResPhysical": { 
+            "description": "The bonus Resistance in Physical damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResChi": { 
+            "description": "The bonus resistance againt Chi damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamChi": { 
+            "description": "The bonus damage in psykic type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResFire": { 
+            "description": "The bonus resistance against fire damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamFire": { 
+            "description": "The bonus damage in fire type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResLightning": { 
+            "description": "The bonus resistance against lightning damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamLightning": { 
+            "description": "The bonus damage in lightning type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResMental": { 
+            "description": "The bonus resistance against mental damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamMental": { 
+            "description": "The bonus damage in mental type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "WeaponType": { 
+            "description": "Describe the type of weapon, in case a bonus is provided to a specific weapon type", 
+            "type": "string",
+            "enum":["None","Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm"," Throwing"]
+        },
+        "WeaponDamageBonus": { 
+            "description": "The bonus damage provided by the equipment to a specific weapon type", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "WeaponPrecisionBonus": { 
+            "description": "The bonus precision provided by the equipment to a specific weapon type", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "PrecisionRange": { 
+            "description": "The bonus Precision in range attack provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "PrecisionMelee": { 
+            "description": "The bonus precision in melee attack provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "HitPoint": { 
+            "description": "The bonus HitPoint provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Mana": { 
+            "description": "The bonus Mana provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Movement": { 
+            "description": "The bonus Movement provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Initiative": { 
+            "description": "The bonus Initiative provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Nature": { 
+            "description": "The bonus Hacking provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Magic": { 
+            "description": "The bonus in magic knowledge provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Demonic": { 
+            "description": "The bonus in demonic knowledge provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Medecine": { 
+            "description": "The bonus in medical knowledge provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },        
+        "Cooking": { 
+            "description": "The bonus in cooking provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Forge": { 
+            "description": "The bonus in cooking provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Stealth": { 
+            "description": "The bonus Stealth provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "OtherEffect": { 
+            "description": "Other effect of the equipment, such as bonus to a specific skill or ability", 
+            "type": "string"
+        },
+        "otherEffectValue": { 
+            "description": "Other effect of the equipment, such as bonus to a specific skill or ability", 
+           "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        }
+    }
+}

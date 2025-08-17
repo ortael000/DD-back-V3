@@ -1,0 +1,304 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "charactersBase", 
+    "description": "Shema of data structure for the basic information needed to generate a character in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the character", 
+            "type": "string",
+            "primaryKey": true 
+        },
+        "XpPoint": { 
+            "description": "Current amount of XP point for the character", 
+            "type": "integer",
+            "primaryKey": false 
+        },
+        "Strength": { 
+            "description": "Base Strength of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Intelligence": { 
+            "description": "Base intelligence of the character, distributed when leveling up ", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Constitution": { 
+            "description": "Base Constitution of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Charisma": { 
+            "description": "Base Charisma of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Dexterity": { 
+            "description": "Base Dexterity of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Agility": { 
+            "description": "Base Agility of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Perception": { 
+            "description": "Base Acuity of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Power": { 
+            "description": "Base Power of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },    
+        "Stealth": { 
+            "description": "Base Stealth skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Medecine": { 
+            "description": "Base Medecine skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Forge": { 
+            "description": "Base forging skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Magic": { 
+            "description": "Base Magic knowledge of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Demonic": { 
+            "description": "Base demonic knowledge of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Cooking": { 
+            "description": "Base Cooking skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Nature": { 
+            "description": "Base knowledge of nature of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Weapon1ID": { 
+            "description": "the ID in the table WEAPONS of the first weapon carried by the character, out of 3 maximum ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Weapon2ID": { 
+            "description": "the ID in the table WEAPONS of the second weapon carried by the character, out of 3 maximum ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Weapon3ID": { 
+            "description": "the ID in the table WEAPONS of the third weapon carried by the character, out of 3 maximum ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentHelmetID": { 
+            "description": "the ID in the table EQUIPMENTS of the helmet equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentArmorID": { 
+            "description": "the ID in the table EQUIPMENTS of the body armor equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentPantsID": { 
+            "description": "the ID in the table EQUIPMENTS of the pants equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentBeltID": { 
+            "description": "the ID in the table EQUIPMENTS of the belt equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false     
+        },
+        "equipmentGauntletID": { 
+            "description": "the ID in the table EQUIPMENTS of the right gauntlet equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentBootsID": { 
+            "description": "the ID in the table EQUIPMENTS of the boots equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentRing1ID": { 
+            "description": "the ID in the table EQUIPMENTS of the first ring equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentRing2ID": { 
+            "description": "the ID in the table EQUIPMENTS of the second ring equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentNecklaceID": { 
+            "description": "the ID in the table EQUIPMENTS of the necklace equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentShieldID": { 
+            "description": "the ID in the table EQUIPMENTS of the shield equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill1ID": { 
+            "description": "the ID in the table SKILLS of the first skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill2ID": { 
+            "description": "the ID in the table SKILLS of the second skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill3ID": { 
+            "description": "the ID in the table SKILLS of the third skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill4ID": { 
+            "description": "the ID in the table SKILLS of the fourth skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill5ID": { 
+            "description": "the ID in the table SKILLS of the fifth skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill6ID": { 
+            "description": "the ID in the table SKILLS of the sixth skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "currentHPLose": { 
+            "description": "Current HP of the character, calculated from the Constitution and the equipment", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "currentManaLose": { 
+            "description": "Current Mana of the character, calculated from the Intelligence and the equipment", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "currentMoney": { 
+            "description": "Current Money of the character", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive1ID": { 
+            "description": "the ID in the table PASSIVES of the first passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive2ID": { 
+            "description": "the ID in the table PASSIVES of the second passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive3ID": { 
+            "description": "the ID in the table PASSIVES of the third passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive4ID": { 
+            "description": "the ID in the table PASSIVES of the fourth passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        }
+    }
+}       

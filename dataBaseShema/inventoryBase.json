@@ -1,0 +1,34 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "inventoryBase", 
+    "description": "Shema of data structure for inventory items that a character can own", 
+    "type": "array", 
+    "properties": { 
+        "CharacterID": { 
+            "description": "which character has the object", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "ObjectType": { 
+            "description": "Type of the object owned", 
+            "type": "string",
+            "enum":["equipment", "weapon", "accessory"]
+        },
+        "ObjectID": { 
+            "description": "ID of the object", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "Name": { 
+            "description": "The name of the object", 
+            "type": "string"
+        },
+        "Quantity": { 
+            "description": "Quantity owned", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        }
+    }
+}

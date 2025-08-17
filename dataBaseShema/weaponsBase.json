@@ -1,0 +1,103 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "weaponsBase", 
+    "description": "Shema of data structure for weapons that a character can equip in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the weapon", 
+            "type": "string"
+        },
+        "Type": { 
+            "description": "Range or Melee", 
+            "type": "string",
+            "enum":["Range", "Melee"]
+        },
+        "Subtype": { 
+            "description": "Range or Melee", 
+            "type": "string",
+            "enum":["Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm"," Throwing", "Mace"]
+        },
+        "Element": { 
+            "description": "The element of the weapon, used to calculate damage and resistances", 
+            "type": "string",
+            "enum":["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+        },
+        "Hand": { 
+            "description": "One hand or Two hands", 
+            "type": "string",
+            "enum":["OneHand", "TwoHands"]
+        },
+        "Value": { 
+            "description": "value of the weapon in money", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "BasePrecision": { 
+            "description": "The base precision bonus of the weapon", 
+            "type": "integer",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "BaseMinDam": { 
+            "description": "The basic minimum damage of the weapon", 
+            "type": "integer",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "BaseMaxDam": { 
+            "description": "The basic maximum damage of the weapon", 
+            "type": "integer",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "PrecisionRatio": { 
+            "description": "The multiplier applied to precision bonus", 
+            "type": "number",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "MinDamRatio": { 
+            "description": "The multiplier applied to min damage bonus", 
+            "type": "number",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "MaxDamRatio": { 
+            "description": "The multiplier applied to max damage bonus", 
+            "type": "number",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "StatDam1": { 
+            "description": "The first stat used to calculate damage bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },
+        "StatDam2": { 
+            "description": "The second stat used to calculate damage bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },
+        "StatPrecision1": { 
+            "description": "The first stat used to calculate precision bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },        
+        "StatPrecision2": { 
+            "description": "The second stat used to calculate precision bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },
+        "CriticScore": { 
+            "description": "the score needed in precision to perform a critical strike that doubles damages", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 40
+        },
+        "OtherEffects": { 
+            "description": "Any other effects of the weapon, described with words and applied by GM", 
+            "type": "string"
+        }
+    }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillsBase",
+  "description": "Schema for skills or abilities used in battleScissor",
+  "type": "array",
+  "properties": {
+      "Name": {
+        "description": "Name of the skill",
+        "type": "string"
+      },
+      "Type": {
+        "description": "Range or Melee",
+        "type": "string",
+        "enum": ["Range", "Melee"]
+      },
+      "Element": {
+        "description": "Elemental type of the skill",
+        "type": "string",
+        "enum": ["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+      },
+      "ManaCost": {
+        "description": "Mana required to use the skill",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000
+      },
+      "ManaCostRatio": {
+        "description": "Multiplier applied to mana cost based on character stats",
+        "type": "number",
+        "minimum": 0,
+        "maximum": 10
+      },
+      "BaseMinDam": {
+        "description": "Base minimum damage of the skill",
+        "type": "integer",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "BaseMaxDam": {
+        "description": "Base maximum damage of the skill",
+        "type": "integer",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "BasePrecision": {
+        "description": "Base precision of the skill",
+        "type": "integer",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "PrecisionRatio": {
+        "description": "Multiplier applied to precision bonus",
+        "type": "number",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "MinDamRatio": {
+        "description": "Multiplier applied to min damage bonus",
+        "type": "number",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "MaxDamRatio": {
+        "description": "Multiplier applied to max damage bonus",
+        "type": "number",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "StatDam1": {
+        "description": "First stat used to calculate damage bonus",
+        "type": "string",
+        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "StatDam2": {
+        "description": "Second stat used to calculate damage bonus",
+        "type": "string",
+        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "StatPrecision1": {
+        "description": "First stat used to calculate precision bonus",
+        "type": "string",
+        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "StatPrecision2": {
+        "description": "Second stat used to calculate precision bonus",
+        "type": "string",
+        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "CriticScore": {
+        "description": "Precision score required to perform a critical strike",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 40
+      },
+      "OtherEffects": {
+        "description": "Additional effects or conditions applied by the skill",
+        "type": "string"
+      }
+    }
+}
+
