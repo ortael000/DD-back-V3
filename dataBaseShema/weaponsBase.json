@@ -15,7 +15,7 @@
         "Subtype": { 
             "description": "Range or Melee", 
             "type": "string",
-            "enum":["Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm"," Throwing", "Mace"]
+            "enum":["None", "Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm", "Throwing", "Mace"]
         },
         "Element": { 
             "description": "The element of the weapon, used to calculate damage and resistances", 

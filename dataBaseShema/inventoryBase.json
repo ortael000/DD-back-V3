@@ -14,6 +14,11 @@
             "type": "string",
             "enum":["equipment", "weapon", "accessory"]
         },
+        "ObjectSubType": { 
+            "description": "Type of the equipment, weapon or accessory owned", 
+            "type": "string",
+            "enum":["All", "None", "Fist", "Sword", "Axe", "Spear", "Bow", "Staff", "Dagger","Hammer", "Crossbow", "Firearm", "Mace", "Throwing","Armor","Boots","Belt","Gauntlet","Helmet","Pants","Ring","Necklace","Shield", "accessory"]
+        },
         "ObjectID": { 
             "description": "ID of the object", 
             "type": "integer",

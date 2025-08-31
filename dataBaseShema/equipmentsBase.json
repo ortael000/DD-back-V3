@@ -7,10 +7,16 @@
             "description": "Name of the equipment", 
             "type": "string"
         },
-        "Type": { 
+        "Subtype": { 
             "description": "The category of the equipment", 
             "type": "string",
             "enum":["All", "Helmet", "Armor", "Pants", "Boots", "Gauntlet", "Belt", "Necklace", "Ring", "Shield"]
+        },
+        "Value": { 
+            "description": "The vpower value of this equipment", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000
         },
         "Restriction": { 
             "description": "Other kind of restriction to equip this equipment", 
@@ -114,6 +120,18 @@
         },
         "DamLightning": { 
             "description": "The bonus damage in lightning type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResIce": { 
+            "description": "The bonus resistance against ice damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamIce": { 
+            "description": "The bonus damage in lightning type provided by the passive", 
             "type": "integer",
             "minimum" : -1000,
             "maximum" : 1000

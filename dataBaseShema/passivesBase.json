@@ -7,15 +7,23 @@
             "description": "Name of the passive", 
             "type": "string"
         },
-        "LevelRequiered": { 
+        "ParentPassive": { 
             "description": "The requiered level to learn this passive", 
             "type": "integer",
-            "minimum" : -1000,
+            "minimum" : 0,
             "maximum" : 1000
         },
-        "Restriction": { 
-            "description": "Other kind of restriction to learn this passive", 
-            "type": "string"
+        "LevelRequired": {
+            "description": "The level required to learn this passive",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "PassiveLevel": {
+            "description": "Level of the passive",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
         },
         "Strength": { 
             "description": "The bonus Strength provided by the passive", 
@@ -119,6 +127,18 @@
             "minimum" : -1000,
             "maximum" : 1000
         },
+        "ResIce": { 
+            "description": "The bonus resistance against ice damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamIce": { 
+            "description": "The bonus damage in lightning type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
         "ResMental": { 
             "description": "The bonus resistance against mental damage provided by the passive", 
             "type": "integer",
@@ -134,7 +154,7 @@
         "WeaponType": { 
             "description": "Describe the type of weapon, in case a bonus is provided to a specific weapon type", 
             "type": "string",
-            "enum":["None","Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm"," Throwing"]
+            "enum":["None","Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm","Throwing"]
         },
         "WeaponDamageBonus": { 
             "description": "The bonus damage provided by the passive to a specific weapon type", 

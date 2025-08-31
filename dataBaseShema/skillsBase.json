@@ -13,6 +13,24 @@
         "type": "string",
         "enum": ["Range", "Melee"]
       },
+      "ParentSkill": {
+        "description": "Skill from which this skill is learned",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10000
+      },
+      "RequiredPassive": {
+        "description": "Passive skill required to learn this skill",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10000
+      },
+      "SkillLevel": {
+        "description": "Level of the skill",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100
+      },
       "Element": {
         "description": "Elemental type of the skill",
         "type": "string",

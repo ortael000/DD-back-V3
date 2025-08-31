@@ -254,23 +254,45 @@ app.get('/inventory/:CharacterID', (req: any, res: any) => {
         if (err) {
             return res.status(500).send(err.message);
         }
-        if (!rows || rows.length === 0) {
+        if (rows.length === 0) {
+            return res.json({});
+        }
+        if (!rows) {
             return res.status(404).send('Item not found');
         }
         res.json(rows);
     });
 });
 
-app.post('/inventoryupdate', (req : any, res : any) => {
-  const {
-    CharacterID,
-    ObjectID,
-    Quantity,
-    ObjectType,
-    Name
+app.post('/characterupdate', (req: any, res: any) => {
+    const { id, charKey, value } = req.body;
+    console.log('Received data to update character:', req.body);
+
+    if (!id || !charKey || value === undefined) {
+        return res.status(400).send('Missing required fields: id, charKey, value');
+    }
+
+    const query = `UPDATE charactersBase SET ${charKey} = ${value} WHERE id = ${id}`;
+
+    db.run(query, function (err) {
+        if (err) {
+            return res.status(500).send(err.message);
+        }
+        res.sendStatus(204);
+    });
+});
+
+app.post('/inventoryupdate', (req: any, res: any) => {
+    const {
+      CharacterID,
+      ObjectID,
+      Quantity,
+      ObjectType,
+      ObjectSubType,
+      Name
   } = req.body;
 
-  console.log('Received data:', req.body);
+  console.log('Received inventory update data:', req.body);
 
   // Basic validation
   if (
@@ -359,9 +381,9 @@ app.post('/inventoryupdate', (req : any, res : any) => {
       }
       const insSql = `
         INSERT INTO inventoryBase
-          (CharacterID, ObjectType, ObjectID, Name, Quantity)
-        VALUES (?,           ?,          ?,        ?,    ?)`;
-      db.run(insSql, [charId, ObjectType, objId, Name, qty], function (err) {
+          (CharacterID, ObjectType, ObjectSubType, ObjectID, Name, Quantity)
+        VALUES (?,           ?,          ?,        ?,    ?,     ?)`;
+      db.run(insSql, [charId, ObjectType, ObjectSubType, objId, Name, qty], function (err) {
         if (err) {
           console.error('Insert error:', err.message);
           return res.status(500).json({ error: 'Failed to insert' });
