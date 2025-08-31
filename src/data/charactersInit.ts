@@ -1,7 +1,7 @@
 export const charactersInit = [ 
     {
     Name: "\"Sal-Amesh the doom of Ryza \"",
-    XpPoint: 25000,
+    XpPoint: 0,
     Strength: 10,
     Intelligence: 10,
     Constitution: 10,
@@ -44,15 +44,15 @@ export const charactersInit = [
     passive3ID: 1,
     passive4ID: 1
     },
-        {
+    {
     Name: "\" Kalypso of Bastaal \"",
-    XpPoint: 250,
-    Strength: 12,
+    XpPoint: 0,
+    Strength: 10,
     Intelligence: 10,
     Constitution: 10,
     Charisma: 10,
-    Dexterity: 14,
-    Agility: 12,
+    Dexterity: 10,
+    Agility: 10,
     Perception: 10,
     Power: 10,
     Stealth: 0,
@@ -62,7 +62,7 @@ export const charactersInit = [
     Demonic: 0,
     Cooking: 0,
     Nature: 0,
-    Weapon1ID: 2,
+    Weapon1ID: 1,
     Weapon2ID: 1,
     Weapon3ID: 1,
     equipmentHelmetID: 1,
@@ -83,8 +83,8 @@ export const charactersInit = [
     skill6ID: 1,
     currentHPLose: 0,
     currentManaLose: 0,
-    currentMoney: 45,
-    passive1ID: 4,
+    currentMoney: 65,
+    passive1ID: 1,
     passive2ID: 1,
     passive3ID: 1,
     passive4ID: 1
