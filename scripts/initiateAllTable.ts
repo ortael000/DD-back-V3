@@ -1,12 +1,13 @@
 import sqlite3 from "sqlite3";
 import { getdb,executeSQLs, consoleLogtableContent, consoleLogTableStructure , createTableFromStructure, createNewEntry, deleteTable, displayAllTableOfDb } from "../src/helpers/databaseHelpers";
 import 'dotenv/config'; 
-import { charactersInit } from "../src/data/charactersInit";
 import { equipmentDataBase } from "../src/data/equipmentDataBase";
 import { passiveDatabase } from "../src/data/passiveDatabase";
 import { weaponsDataBase } from "../src/data/weaponsDataBase";
 import { skillsDataBase } from "../src/data/skillDataBase";
 import { inventoryDataBase } from "../src/data/inventory";
+
+import { basicCharacter } from "../src/data/charactersInit";
 
  
 console.log("on lance initiate all table")
@@ -15,12 +16,13 @@ const db = getdb()
 const charSchemaPath = process.env.Character_Table_JSON_SCHEMA_PATH as string
 
 export const allTables = [
-    {name : "charactersBase", Schema : charSchemaPath + "charactersBase.json", database : charactersInit},
+    {name : "charactersBase", Schema : charSchemaPath + "charactersBase.json", database : [basicCharacter] },
     {name : "equipmentsBase", Schema : charSchemaPath + "equipmentsBase.json", database : equipmentDataBase},
     {name : "passivesBase", Schema : charSchemaPath + "passivesBase.json", database : passiveDatabase},
     {name : "weaponsBase", Schema : charSchemaPath + "weaponsBase.json", database : weaponsDataBase},
     {name : "skillsBase", Schema : charSchemaPath + "skillsBase.json", database : skillsDataBase},
-    {name : "inventoryBase", Schema : charSchemaPath + "inventoryBase.json", database : inventoryDataBase}
+    {name : "inventoryBase", Schema : charSchemaPath + "inventoryBase.json", database : inventoryDataBase},
+    {name : "characterPassword", Schema : charSchemaPath + "characterPassword.json", database : [{Id: 0, Password: "\"password\""}]}
 ]
 
 let sqlInstruction : string[] = [];

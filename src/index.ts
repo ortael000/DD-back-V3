@@ -5,6 +5,11 @@ import sqlite3 from "sqlite3";
 import { getdb, createNewEntry } from "./helpers/databaseHelpers";
 import 'dotenv/config'; 
 
+import { characterKeys } from "./data/ketList";
+import { basicCharacter } from "./data/charactersInit";
+
+import { buildUpdate } from "./helpers/updateTable";
+
 const app = express();
 app.use(cors()); // Enable CORS for all routes
 const port = 3000;
@@ -23,6 +28,22 @@ app.get('/character/:id', (req :any, res:any) => {
             return res.status(404).send('Item not found');
         }
         res.json(row);
+    });
+});
+
+app.get('/characters/all', (req :any, res:any) => {
+    console.log("Fetching all characters");
+    const query = `SELECT * FROM charactersBase`;
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Error fetching all characters:', err.message);
+            return res.status(500).send(err.message);
+        }
+        if (!rows || rows.length === 0) {
+            return res.status(404).send('No items found');
+        }
+        res.json(rows);
+        console.log("Fetched characters:", rows);
     });
 });
 
@@ -247,40 +268,76 @@ app.put('/character/:id', (req:any, res:any) => {    // to modify one of several
     });
 });
 
-app.get('/inventory/:CharacterID', (req: any, res: any) => {
-    const { CharacterID } = req.params;
-    const query = `SELECT * FROM inventoryBase WHERE CharacterID = ?`;
-    db.all(query, [CharacterID], (err, rows) => {
-        if (err) {
-            return res.status(500).send(err.message);
-        }
-        if (rows.length === 0) {
-            return res.json({});
-        }
-        if (!rows) {
-            return res.status(404).send('Item not found');
-        }
-        res.json(rows);
-    });
+app.post('/characterupdate', (req: any, res: any) => {
+  
+  const { id, updates } = req.body;
+
+  const sqlInstruction = buildUpdate('charactersBase', id, updates, characterKeys).sql;
+  const values = buildUpdate('charactersBase', id, updates, characterKeys).values;
+
+  db.run(sqlInstruction, values, function (err: Error | null) {
+    if (err) {
+      return res.status(500).send(err.message);
+    }
+    if (this.changes === 0) {
+      return res.status(404).send('Character not found');
+    }
+    return res.sendStatus(204);
+  });
 });
 
-app.post('/characterupdate', (req: any, res: any) => {
-    const { id, charKey, value } = req.body;
-    console.log('Received data to update character:', req.body);
+app.post('/charactercreate', (req: any, res: any) => {
 
-    if (!id || !charKey || value === undefined) {
-        return res.status(400).send('Missing required fields: id, charKey, value');
+  console.log('Received character creation data:', req.body);
+  
+  const { name, password } = req.body;
+
+  if (!name || !password) {
+      return res.status(400).send('Missing name or password');
+  }
+
+  const columns = Object.keys(basicCharacter)
+      .map((col) => `"${col}"`)
+      .join(', ');
+  const placeholders = Object.keys(basicCharacter)
+      .map(() => '?')
+      .join(', ');
+
+  const updatedCharacter = { ...basicCharacter, Name: name };
+  const values = Object.values(updatedCharacter);
+
+  const sqlInstruction = `INSERT INTO charactersBase (${columns}) VALUES (${placeholders})`;
+
+  const sqlPasswordInstruction = `INSERT INTO characterPassword ("CharacterId", "Password") VALUES (?, ?)`;
+
+  console.log('SQL Instruction:', sqlInstruction);
+  console.log('Values:', values);
+
+  db.run(sqlInstruction, values, function (err: Error | null) {
+    if (err) {
+      return res.status(500).send(`Character insert error: ${err.message}`);
     }
 
-    const query = `UPDATE charactersBase SET ${charKey} = ${value} WHERE id = ${id}`;
+    console.log('Character created with ID:', this.lastID);
 
-    db.run(query, function (err) {
-        if (err) {
-            return res.status(500).send(err.message);
-        }
-        res.sendStatus(204);
+    const characterId = this.lastID;
+    const valuesPassword = [characterId, password];
+
+    console.log('SQL Password Instruction:', sqlPasswordInstruction);
+    console.log('Values Password:', valuesPassword);
+
+    // Second insert: user with character ID
+    db.run(sqlPasswordInstruction, valuesPassword, function (err: Error | null) {
+      if (err) {
+        console.error('Password insert error:', err.message);
+        return res.status(500).send(`User insert error: ${err.message}`);
+      }
+
+      return res.status(201).json({ characterId });
     });
+  });
 });
+
 
 app.post('/inventoryupdate', (req: any, res: any) => {
     const {

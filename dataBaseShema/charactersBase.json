@@ -16,59 +16,115 @@
         "Strength": { 
             "description": "Base Strength of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Intelligence": { 
             "description": "Base intelligence of the character, distributed when leveling up ", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Constitution": { 
             "description": "Base Constitution of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Charisma": { 
             "description": "Base Charisma of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Dexterity": { 
             "description": "Base Dexterity of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Agility": { 
             "description": "Base Agility of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Perception": { 
             "description": "Base Acuity of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
         },
         "Power": { 
             "description": "Base Power of the character, distributed when leveling up", 
             "type": "integer",
-            "minimum" : -1000,
-            "maximum" : 1000,
+            "minimum" : -10000,
+            "maximum" : 10000,
             "primaryKey": false 
-        },    
+        },
+        "TempStrength": { 
+            "description": "temporary Strength of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempIntelligence": { 
+            "description": "temporary Intelligence of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempConstitution": { 
+            "description": "temporary Constitution of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempCharisma": { 
+            "description": "temporary Charisma of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempDexterity": { 
+            "description": "temporary Dexterity of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempAgility": { 
+            "description": "temporary Agility of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempPerception": { 
+            "description": "temporary Perception of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempPower": { 
+            "description": "temporary Power of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
         "Stealth": { 
             "description": "Base Stealth skill of the character, acquired via the background or during the adventure", 
             "type": "integer",

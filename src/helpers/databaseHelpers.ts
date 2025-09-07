@@ -72,7 +72,7 @@ export function createTableFromStructure (jsonSchemaPath : string) {    // A fun
 
 export function createNewEntry(tableName: string,  newEntry : any) {
 
-    console.log("create new entry in the table " + tableName + " with the following data: " + JSON.stringify(newEntry))
+   // console.log("create new entry in the table " + tableName + " with the following data: " + JSON.stringify(newEntry))
     let sqlInstruction : string = "INSERT INTO " + tableName + " (";
     
     let keys = Object.keys(newEntry); 
@@ -114,14 +114,14 @@ export function displayAllTableOfDb (db: sqlite3.Database){
 }
 
 export function executeSQLs (db: sqlite3.Database, sqlInstructions : string[]) {  //take in input an array of SQL instruction to execute in an asynchronous way
-    console.log("Executing SQL instructions...");
+    // console.log("Executing SQL instructions...");
     const executeSQL = (sql : string) => {     // First we create a function that generate a promise to execute the sql statement and manage the promise resolution
         return new Promise((resolve, reject) => {
             db.run(sql, (err:any) => {
                 if (err) {
                     reject(err.message);
                 } else {
-                    resolve(`---SQL executed: ${sql}`);
+                   resolve(`---SQL executed: ${sql}`);
                 }
             });
         });
@@ -130,7 +130,7 @@ export function executeSQLs (db: sqlite3.Database, sqlInstructions : string[]) {
     (async () => {       // Then we create a asynch function that run the sql instruction one afer the others
         try {
             for (let sql of sqlInstructions) {
-                console.log(`Executing SQL: ${sql}`);
+                // console.log(`Executing SQL: ${sql}`);
                 const result = await executeSQL(sql);
                 console.log(result);
             }

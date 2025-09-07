@@ -87,22 +87,22 @@
       "StatDam1": {
         "description": "First stat used to calculate damage bonus",
         "type": "string",
-        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
       },
       "StatDam2": {
         "description": "Second stat used to calculate damage bonus",
         "type": "string",
-        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
       },
       "StatPrecision1": {
         "description": "First stat used to calculate precision bonus",
         "type": "string",
-        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
       },
       "StatPrecision2": {
         "description": "Second stat used to calculate precision bonus",
         "type": "string",
-        "enum": ["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
       },
       "CriticScore": {
         "description": "Precision score required to perform a critical strike",
