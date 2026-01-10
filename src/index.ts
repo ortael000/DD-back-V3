@@ -15,7 +15,7 @@ import CharacterFullRoute from "./routes/characterFullRoute";
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
-const port = 3000;
+const port = process.env.PORT || 3000;
 const db = getdb();
 
 app.use(bodyParser.json());
@@ -420,7 +420,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
              AND ObjectID    = ?`;
         db.run(updSql, [qty, charId, objId], function (err) {
           if (err) {
-            // console.error('Update error:', err.message);
+            console.error('Update error:', err.message);
             return res.status(500).json({ error: 'Failed to update' });
           }
           res.json({
@@ -440,7 +440,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
              AND ObjectID    = ?`;
         db.run(delSql, [charId, objId], function (err) {
           if (err) {
-            // console.error('Delete error:', err.message);
+            console.error('Delete error:', err.message);
             return res.status(500).json({ error: 'Failed to delete' });
           }
           res.json({
@@ -465,7 +465,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
         VALUES (?,           ?,          ?,        ?,    ?,     ?)`;
       db.run(insSql, [charId, ObjectType, ObjectSubType, objId, Name, qty], function (err) {
         if (err) {
-          // console.error('Insert error:', err.message);
+          console.error('Insert error:', err.message);
           return res.status(500).json({ error: 'Failed to insert' });
         }
         res.status(201).json({
@@ -481,54 +481,54 @@ app.post('/inventoryupdate', (req: any, res: any) => {
 });
 
 app.get('/ennemies/all', (req :any, res:any) => {
-    // console.log("Fetching all ennemies");
+    console.log("Fetching all ennemies");
     const query = `SELECT * FROM ennemiesBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            // console.error('Error fetching all ennemies:', err.message);
+            console.error('Error fetching all ennemies:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        // console.log("Fetched characters:", rows);
+        console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/loots/all', (req :any, res:any) => {
-    // console.log("Fetching all loots");
+    console.log("Fetching all loots");
     const query = `SELECT * FROM lootsBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            // console.error('Error fetching all ennemies:', err.message);
+            console.error('Error fetching all ennemies:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        // console.log("Fetched characters:", rows);
+        console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/loot/:LootTypeID', (req :any, res:any) => {
-    // console.log("Fetching all loots");
+    console.log("Fetching all loots");
     const { LootTypeID } = req.params;
     const query = `SELECT * FROM lootsBase WHERE LootTypeID = ?`;
     db.all(query, [LootTypeID], (err, rows) => {
         if (err) {
-            // console.error('Error fetching all loots:', err.message);
+            console.error('Error fetching all loots:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        // console.log("Fetched characters:", rows);
+        console.log("Fetched characters:", rows);
     });
 });
 
 app.listen(port, () => {
-    // console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server running on port ${port}`);
 });
