@@ -1,4 +1,5 @@
 
+
 export const basicCharacter =     {
     Name: "\"newCharacter \"",
     XpPoint: 0,
@@ -25,6 +26,7 @@ export const basicCharacter =     {
     Demonic: 0,
     Cooking: 0,
     Nature: 0,
+    Martial:0,
     Weapon1ID: 1,
     Weapon2ID: 1,
     Weapon3ID: 1,

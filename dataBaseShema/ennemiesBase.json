@@ -1,0 +1,226 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "ennemiesBase", 
+    "description": "Schema of data structure for the enemies in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Xp": { 
+            "description": "Experience points granted by the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 10000
+        },
+        "Name": { 
+            "description": "Name of the enemy",
+            "type": "string"
+        },
+        "Race": {
+            "description": "The race of the enemy",
+            "type": "string",
+            "enum": ["Bandit", "Orkish", "ForestBeast", "Elemental", "Soldiers", "Undead", "Draconic", "Demons"]
+        },
+        "Description": {
+            "description": "Description of the enemy",
+            "type": "string"
+        },
+        "HitPoint": { 
+            "description": "The total Hit Points of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 10000
+        },
+        "Mana": { 
+            "description": "The total Mana of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 10000
+        },
+        "DefenseRange": { 
+            "description": "The Range Defense value of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseMelee": { 
+            "description": "The Melee Defense value of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResPhysical": { 
+            "description": "The total Physical Resistance of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResChi": { 
+            "description": "The total Chi Resistance of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResFire": { 
+            "description": "The total Chi Resistance of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResLightning": { 
+            "description": "The total Lightning Resistance of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResIce": { 
+            "description": "The total Ice Resistance of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResMental": { 
+            "description": "The total Mental Resistance of the enemy", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Skill1Name": { 
+            "description": "Name of the first skill of the enemy",
+            "type": "string"
+        },
+        "Skill1Cost": { 
+            "description": "Mana cost of the first skill of the enemy", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 2000
+        },
+        "Skill1Element": { 
+            "description": "Element type of the first skill of the enemy",
+            "type": "string",
+            "enum": ["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+        },
+        "Skill1Type": {
+            "description": "Type of the first skill of the enemy",
+            "type": "string",
+            "enum": ["Melee", "Range"]
+        },
+        "Skill1TouchChance": { 
+            "description": "Chance to hit with the first skill of the enemy", 
+            "type": "integer",
+            "minimum" : -10,
+            "maximum" : 200
+        },
+        "Skill1MinDamage": { 
+            "description": "Minimum damage of the first skill of the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "Skill1MaxDamage": { 
+            "description": "Maximum damage of the first skill of the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "Skill1OtherEffect": { 
+            "description": "Other effect of the first skill of the enemy",
+            "type": "string"
+        },
+        "Skill2Name": { 
+            "description": "Name of the second skill of the enemy",
+            "type": "string"
+        },
+        "Skill2Cost": { 
+            "description": "Mana cost of the second skill of the enemy", 
+            "type": "integer",
+            "minimum" : -10,
+            "maximum" : 2000
+        },
+        "Skill2Element": { 
+            "description": "Element type of the second skill of the enemy",
+            "type": "string",
+            "enum": ["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+        },
+        "Skill2Type": {
+            "description": "Type of the second skill of the enemy",
+            "type": "string",
+            "enum": ["Melee", "Range"]
+        },
+        "Skill2TouchChance": { 
+            "description": "Chance to hit with the second skill of the enemy", 
+            "type": "integer",
+            "minimum" : -10,
+            "maximum" : 200
+        },
+        "Skill2MinDamage": { 
+            "description": "Minimum damage of the second skill of the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "Skill2MaxDamage": { 
+            "description": "Maximum damage of the second skill of the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "Skill2OtherEffect": { 
+            "description": "Other effect of the second skill of the enemy",
+            "type": "string"
+        },
+        "Skill3Name": { 
+            "description": "Name of the third skill of the enemy",
+            "type": "string"
+        },
+        "Skill3Cost": { 
+            "description": "Mana cost of the third skill of the enemy", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 2000
+        }, 
+        "Skill3Element": { 
+            "description": "Element type of the third skill of the enemy",
+            "type": "string",
+            "enum": ["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+        },
+        "Skill3Type": {
+            "description": "Type of the third skill of the enemy",
+            "type": "string",
+            "enum": ["Melee", "Range"]
+        },
+        "Skill3TouchChance": { 
+            "description": "Chance to hit with the third skill of the enemy", 
+            "type": "integer",
+            "minimum" : -10,
+            "maximum" : 200
+        },
+        "Skill3MinDamage": { 
+            "description": "Minimum damage of the third skill of the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "Skill3MaxDamage": { 
+            "description": "Maximum damage of the third skill of the enemy",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "Skill3OtherEffect": { 
+            "description": "Other effect of the third skill of the enemy",
+            "type": "string"
+        },
+        "LootType": {
+            "description": "Type of loot dropped by the enemy",
+            "type": "string"
+        },
+        "LootTypeName": { 
+            "description": "Name of the loot type dropped by the enemy",
+            "type": "string"
+        },
+        "LootValue": { 
+            "description": "Value of the loot dropped by the enemy", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000
+        }   
+    }
+}

@@ -19,8 +19,13 @@
         "minimum": 0,
         "maximum": 10000
       },
-      "RequiredPassive": {
-        "description": "Passive skill required to learn this skill",
+      "RequiredKnowledge": {
+        "description": "Type of knowledge needed to learn this skill",
+        "type": "string",
+        "enum": ["Nature", "Magic", "Combat", "Demonic", "Medicine", "Cooking", "Forge", "Stealth", "Martial"]
+      },
+      "KnowledgeLevel": {
+        "description": "level of knowledge required to learn this skill",
         "type": "integer",
         "minimum": 0,
         "maximum": 10000

@@ -72,7 +72,7 @@ export function createTableFromStructure (jsonSchemaPath : string) {    // A fun
 
 export function createNewEntry(tableName: string,  newEntry : any) {
 
-   // console.log("create new entry in the table " + tableName + " with the following data: " + JSON.stringify(newEntry))
+   console.log("create new entry in the table " + tableName + " with the following data: " + JSON.stringify(newEntry))
     let sqlInstruction : string = "INSERT INTO " + tableName + " (";
     
     let keys = Object.keys(newEntry); 

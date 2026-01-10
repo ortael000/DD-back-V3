@@ -6,6 +6,8 @@ import { passiveDatabase } from "../src/data/passiveDatabase";
 import { weaponsDataBase } from "../src/data/weaponsDataBase";
 import { skillsDataBase } from "../src/data/skillDataBase";
 import { inventoryDataBase } from "../src/data/inventory";
+import { ennemiesBase } from "../src/data/ennemiesDataBase";
+import { lootBase } from "../src/data/LootsDataBase";
 
 import { basicCharacter } from "../src/data/charactersInit";
 
@@ -22,7 +24,9 @@ export const allTables = [
     {name : "weaponsBase", Schema : charSchemaPath + "weaponsBase.json", database : weaponsDataBase},
     {name : "skillsBase", Schema : charSchemaPath + "skillsBase.json", database : skillsDataBase},
     {name : "inventoryBase", Schema : charSchemaPath + "inventoryBase.json", database : inventoryDataBase},
-    {name : "characterPassword", Schema : charSchemaPath + "characterPassword.json", database : [{Id: 0, Password: "\"password\""}]}
+    {name : "characterPassword", Schema : charSchemaPath + "characterPassword.json", database : [{Id: 0, Password: "\"password\""}]},
+    {name : "ennemiesBase", Schema : charSchemaPath + "ennemiesBase.json", database : ennemiesBase},
+    {name : "lootsBase", Schema : charSchemaPath + "lootsBase.json", database : lootBase},
 ]
 
 let sqlInstruction : string[] = [];

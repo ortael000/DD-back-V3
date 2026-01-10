@@ -1,0 +1,38 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "LootsBase", 
+    "description": "Shema of data structure for loot items that can be dropped by enemies", 
+    "type": "array", 
+    "properties": { 
+        "LootTypeID": { 
+            "description": "which character has the object", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "LootTypeName": { 
+            "description": "Name of the type of loot", 
+            "type": "string"
+        },
+        "ObjectType": { 
+            "description": "Type of the object owned", 
+            "type": "string",
+            "enum":["equipment", "weapon", "accessory","money"]
+        },
+        "ObjectID": { 
+            "description": "ID of the object", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "ObjectName": { 
+            "description": "The name of the object", 
+            "type": "string"
+        },
+        "chance": { 
+            "description": "Chance to drop the object in % if the loot value of the enemy is 100", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 1000
+        }
+    }
+}

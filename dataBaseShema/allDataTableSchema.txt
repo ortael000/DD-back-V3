@@ -1,0 +1,1184 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "characterPassword", 
+    "description": "Shema of data structure for the basic information needed to generate a character in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "CharacterId": { 
+            "description": "Unique identifier for the character", 
+            "type": "integer",
+            "primaryKey": true 
+        },
+        "Password": { 
+            "description": "Password for the character", 
+            "type": "string",
+            "primaryKey": false 
+        }
+    }
+}       
+
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "charactersBase", 
+    "description": "Shema of data structure for the basic information needed to generate a character in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the character", 
+            "type": "string",
+            "primaryKey": true 
+        },
+        "XpPoint": { 
+            "description": "Current amount of XP point for the character", 
+            "type": "integer",
+            "primaryKey": false 
+        },
+        "Strength": { 
+            "description": "Base Strength of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Intelligence": { 
+            "description": "Base intelligence of the character, distributed when leveling up ", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Constitution": { 
+            "description": "Base Constitution of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Charisma": { 
+            "description": "Base Charisma of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Dexterity": { 
+            "description": "Base Dexterity of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Agility": { 
+            "description": "Base Agility of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Perception": { 
+            "description": "Base Acuity of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Power": { 
+            "description": "Base Power of the character, distributed when leveling up", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempStrength": { 
+            "description": "temporary Strength of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempIntelligence": { 
+            "description": "temporary Intelligence of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempConstitution": { 
+            "description": "temporary Constitution of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempCharisma": { 
+            "description": "temporary Charisma of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempDexterity": { 
+            "description": "temporary Dexterity of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempAgility": { 
+            "description": "temporary Agility of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempPerception": { 
+            "description": "temporary Perception of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "TempPower": { 
+            "description": "temporary Power of the character, situational", 
+            "type": "integer",
+            "minimum" : -10000,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Stealth": { 
+            "description": "Base Stealth skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Medecine": { 
+            "description": "Base Medecine skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Forge": { 
+            "description": "Base forging skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Magic": { 
+            "description": "Base Magic knowledge of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Demonic": { 
+            "description": "Base demonic knowledge of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Cooking": { 
+            "description": "Base Cooking skill of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Nature": { 
+            "description": "Base knowledge of nature of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Martial": { 
+            "description": "Base knowledge of martial skills of the character, acquired via the background or during the adventure", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000,
+            "primaryKey": false 
+        },
+        "Weapon1ID": { 
+            "description": "the ID in the table WEAPONS of the first weapon carried by the character, out of 3 maximum ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Weapon2ID": { 
+            "description": "the ID in the table WEAPONS of the second weapon carried by the character, out of 3 maximum ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "Weapon3ID": { 
+            "description": "the ID in the table WEAPONS of the third weapon carried by the character, out of 3 maximum ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentHelmetID": { 
+            "description": "the ID in the table EQUIPMENTS of the helmet equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentArmorID": { 
+            "description": "the ID in the table EQUIPMENTS of the body armor equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentPantsID": { 
+            "description": "the ID in the table EQUIPMENTS of the pants equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentBeltID": { 
+            "description": "the ID in the table EQUIPMENTS of the belt equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false     
+        },
+        "equipmentGauntletID": { 
+            "description": "the ID in the table EQUIPMENTS of the right gauntlet equiped by the character ", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentBootsID": { 
+            "description": "the ID in the table EQUIPMENTS of the boots equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentRing1ID": { 
+            "description": "the ID in the table EQUIPMENTS of the first ring equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentRing2ID": { 
+            "description": "the ID in the table EQUIPMENTS of the second ring equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentNecklaceID": { 
+            "description": "the ID in the table EQUIPMENTS of the necklace equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "equipmentShieldID": { 
+            "description": "the ID in the table EQUIPMENTS of the shield equiped by the character out of 4 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill1ID": { 
+            "description": "the ID in the table SKILLS of the first skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill2ID": { 
+            "description": "the ID in the table SKILLS of the second skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill3ID": { 
+            "description": "the ID in the table SKILLS of the third skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill4ID": { 
+            "description": "the ID in the table SKILLS of the fourth skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill5ID": { 
+            "description": "the ID in the table SKILLS of the fifth skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "skill6ID": { 
+            "description": "the ID in the table SKILLS of the sixth skill acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "currentHPLose": { 
+            "description": "Current HP of the character, calculated from the Constitution and the equipment", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "currentManaLose": { 
+            "description": "Current Mana of the character, calculated from the Intelligence and the equipment", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "currentMoney": { 
+            "description": "Current Money of the character", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive1ID": { 
+            "description": "the ID in the table PASSIVES of the first passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive2ID": { 
+            "description": "the ID in the table PASSIVES of the second passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive3ID": { 
+            "description": "the ID in the table PASSIVES of the third passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        },
+        "passive4ID": { 
+            "description": "the ID in the table PASSIVES of the fourth passive acquired by the character out of 5 maximum", 
+            "type": "integer",
+            "minimum" : 1,
+            "maximum" : 10000,
+            "primaryKey": false 
+        }
+    }
+}       
+
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "equipmentsBase", 
+    "description": "Shema of data structure for the equipments that the characters can equip in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the equipment", 
+            "type": "string"
+        },
+        "Subtype": { 
+            "description": "The category of the equipment", 
+            "type": "string",
+            "enum":["All", "Helmet", "Armor", "Pants", "Boots", "Gauntlet", "Belt", "Necklace", "Ring", "Shield"]
+        },
+        "Value": { 
+            "description": "The vpower value of this equipment", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 10000
+        },
+        "Restriction": { 
+            "description": "Other kind of restriction to equip this equipment", 
+            "type": "string"
+        },
+        "Strength": { 
+            "description": "The bonus Strength provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Intelligence": { 
+            "description": "The bonus Intelligence provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Constitution": { 
+            "description": "The bonus Constitution provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Charisma": { 
+            "description": "The bonus Charisma provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Dexterity": { 
+            "description": "The bonus Dexterity provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Agility": { 
+            "description": "The bonus Agility provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Perception": { 
+            "description": "The bonus Perception provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Power": { 
+            "description": "The bonus Power provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseRange": { 
+            "description": "The bonus Defense Range provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseMelee": { 
+            "description": "The bonus Defense Melee provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResPhysical": { 
+            "description": "The bonus Resistance in Physical damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResChi": { 
+            "description": "The bonus resistance againt Chi damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamChi": { 
+            "description": "The bonus damage in psykic type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResFire": { 
+            "description": "The bonus resistance against fire damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamFire": { 
+            "description": "The bonus damage in fire type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResLightning": { 
+            "description": "The bonus resistance against lightning damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamLightning": { 
+            "description": "The bonus damage in lightning type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResIce": { 
+            "description": "The bonus resistance against ice damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamIce": { 
+            "description": "The bonus damage in lightning type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResMental": { 
+            "description": "The bonus resistance against mental damage provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamMental": { 
+            "description": "The bonus damage in mental type provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "WeaponType": { 
+            "description": "Describe the type of weapon, in case a bonus is provided to a specific weapon type", 
+            "type": "string",
+            "enum":["None","Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm"," Throwing"]
+        },
+        "WeaponDamageBonus": { 
+            "description": "The bonus damage provided by the equipment to a specific weapon type", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "WeaponPrecisionBonus": { 
+            "description": "The bonus precision provided by the equipment to a specific weapon type", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "PrecisionRange": { 
+            "description": "The bonus Precision in range attack provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "PrecisionMelee": { 
+            "description": "The bonus precision in melee attack provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "HitPoint": { 
+            "description": "The bonus HitPoint provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Mana": { 
+            "description": "The bonus Mana provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Movement": { 
+            "description": "The bonus Movement provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Initiative": { 
+            "description": "The bonus Initiative provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Nature": { 
+            "description": "The bonus Hacking provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Magic": { 
+            "description": "The bonus in magic knowledge provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Demonic": { 
+            "description": "The bonus in demonic knowledge provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Medecine": { 
+            "description": "The bonus in medical knowledge provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },        
+        "Cooking": { 
+            "description": "The bonus in cooking provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Forge": { 
+            "description": "The bonus in cooking provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Stealth": { 
+            "description": "The bonus Stealth provided by the equipment", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Martial": { 
+            "description": "The bonus Martial provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "OtherEffect": { 
+            "description": "Other effect of the equipment, such as bonus to a specific skill or ability", 
+            "type": "string"
+        },
+        "otherEffectValue": { 
+            "description": "Other effect of the equipment, such as bonus to a specific skill or ability", 
+           "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        }
+    }
+}
+
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "inventoryBase", 
+    "description": "Shema of data structure for inventory items that a character can own", 
+    "type": "array", 
+    "properties": { 
+        "CharacterID": { 
+            "description": "which character has the object", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "ObjectType": { 
+            "description": "Type of the object owned", 
+            "type": "string",
+            "enum":["equipment", "weapon", "accessory"]
+        },
+        "ObjectSubType": { 
+            "description": "Type of the equipment, weapon or accessory owned", 
+            "type": "string",
+            "enum":["All", "None", "Fist", "Sword", "Axe", "Spear", "Bow", "Staff", "Dagger","Hammer", "Crossbow", "Firearm", "Mace", "Throwing","Armor","Boots","Belt","Gauntlet","Helmet","Pants","Ring","Necklace","Shield", "accessory"]
+        },
+        "ObjectID": { 
+            "description": "ID of the object", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "Name": { 
+            "description": "The name of the object", 
+            "type": "string"
+        },
+        "Quantity": { 
+            "description": "Quantity owned", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        }
+    }
+}
+
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "passivesBase", 
+    "description": "Shema of data structure for the passive that the character can have in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the passive", 
+            "type": "string"
+        },
+        "ParentPassive": { 
+            "description": "The requiered level to learn this passive", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 1000
+        },
+        "LevelRequired": {
+            "description": "The level required to learn this passive",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 1000
+        },
+        "PassiveLevel": {
+            "description": "Level of the passive",
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 100
+        },
+        "Strength": { 
+            "description": "The bonus Strength provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Intelligence": { 
+            "description": "The bonus Intelligence provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Constitution": { 
+            "description": "The bonus Constitution provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Charisma": { 
+            "description": "The bonus Charisma provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Dexterity": { 
+            "description": "The bonus Dexterity provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Agility": { 
+            "description": "The bonus Agility provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Perception": { 
+            "description": "The bonus Perception provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Power": { 
+            "description": "The bonus Power provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseRange": { 
+            "description": "The bonus Defense Range provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DefenseMelee": { 
+            "description": "The bonus Defense Melee provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResPhysical": { 
+            "description": "The bonus Resistance in Physical damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResChi": { 
+            "description": "The bonus resistance againt Chi damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamChi": { 
+            "description": "The bonus damage in psykic type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResFire": { 
+            "description": "The bonus resistance against fire damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamFire": { 
+            "description": "The bonus damage in fire type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResLightning": { 
+            "description": "The bonus resistance against lightning damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamLightning": { 
+            "description": "The bonus damage in lightning type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResIce": { 
+            "description": "The bonus resistance against ice damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamIce": { 
+            "description": "The bonus damage in lightning type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "ResMental": { 
+            "description": "The bonus resistance against mental damage provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "DamMental": { 
+            "description": "The bonus damage in mental type provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "WeaponType": { 
+            "description": "Describe the type of weapon, in case a bonus is provided to a specific weapon type", 
+            "type": "string",
+            "enum":["None","Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm","Throwing"]
+        },
+        "WeaponDamageBonus": { 
+            "description": "The bonus damage provided by the passive to a specific weapon type", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "WeaponPrecisionBonus": { 
+            "description": "The bonus precision provided by the passive to a specific weapon type", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "PrecisionRange": { 
+            "description": "The bonus Precision in range attack provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "PrecisionMelee": { 
+            "description": "The bonus precision in melee attack provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "HitPoint": { 
+            "description": "The bonus HitPoint provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Mana": { 
+            "description": "The bonus Mana provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Movement": { 
+            "description": "The bonus Movement provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Initiative": { 
+            "description": "The bonus Initiative provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Nature": { 
+            "description": "The bonus Hacking provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Magic": { 
+            "description": "The bonus in magic knowledge provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Demonic": { 
+            "description": "The bonus in demonic knowledge provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Medecine": { 
+            "description": "The bonus in medical knowledge provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },        
+        "Cooking": { 
+            "description": "The bonus in cooking provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Forge": { 
+            "description": "The bonus in cooking provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Stealth": { 
+            "description": "The bonus Stealth provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "Martial": { 
+            "description": "The bonus Martial provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
+        "OtherEffect": { 
+            "description": "Other effect of the equipment, such as bonus to a specific skill or ability", 
+            "type": "string"
+        },
+        "otherEffectValue": { 
+            "description": "Other effect of the passive, such as bonus to a specific skill or ability", 
+           "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        }
+    }
+}
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SkillsBase",
+  "description": "Schema for skills or abilities used in battleScissor",
+  "type": "array",
+  "properties": {
+      "Name": {
+        "description": "Name of the skill",
+        "type": "string"
+      },
+      "Type": {
+        "description": "Range or Melee",
+        "type": "string",
+        "enum": ["Range", "Melee"]
+      },
+      "ParentSkill": {
+        "description": "Skill from which this skill is learned",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10000
+      },
+      "RequiredKnowledge": {
+        "description": "Type of knowledge needed to learn this skill",
+        "type": "string",
+        "enum": ["Nature", "Magic", "Combat", "Demonic", "Medicine", "Cooking", "Forge", "Stealth", "Martial"]
+      },
+      "KnowledgeLevel": {
+        "description": "level of knowledge required to learn this skill",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 10000
+      },
+      "SkillLevel": {
+        "description": "Level of the skill",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100
+      },
+      "Element": {
+        "description": "Elemental type of the skill",
+        "type": "string",
+        "enum": ["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+      },
+      "ManaCost": {
+        "description": "Mana required to use the skill",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 1000
+      },
+      "ManaCostRatio": {
+        "description": "Multiplier applied to mana cost based on character stats",
+        "type": "number",
+        "minimum": 0,
+        "maximum": 10
+      },
+      "BaseMinDam": {
+        "description": "Base minimum damage of the skill",
+        "type": "integer",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "BaseMaxDam": {
+        "description": "Base maximum damage of the skill",
+        "type": "integer",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "BasePrecision": {
+        "description": "Base precision of the skill",
+        "type": "integer",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "PrecisionRatio": {
+        "description": "Multiplier applied to precision bonus",
+        "type": "number",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "MinDamRatio": {
+        "description": "Multiplier applied to min damage bonus",
+        "type": "number",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "MaxDamRatio": {
+        "description": "Multiplier applied to max damage bonus",
+        "type": "number",
+        "minimum": -100,
+        "maximum": 1000
+      },
+      "StatDam1": {
+        "description": "First stat used to calculate damage bonus",
+        "type": "string",
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "StatDam2": {
+        "description": "Second stat used to calculate damage bonus",
+        "type": "string",
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "StatPrecision1": {
+        "description": "First stat used to calculate precision bonus",
+        "type": "string",
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "StatPrecision2": {
+        "description": "Second stat used to calculate precision bonus",
+        "type": "string",
+        "enum": ["None","Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+      },
+      "CriticScore": {
+        "description": "Precision score required to perform a critical strike",
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 40
+      },
+      "OtherEffects": {
+        "description": "Additional effects or conditions applied by the skill",
+        "type": "string"
+      }
+    }
+}
+
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "weaponsBase", 
+    "description": "Shema of data structure for weapons that a character can equip in battleScissor", 
+    "type": "array", 
+    "properties": { 
+        "Name": { 
+            "description": "Name of the weapon", 
+            "type": "string"
+        },
+        "Type": { 
+            "description": "Range or Melee", 
+            "type": "string",
+            "enum":["Range", "Melee"]
+        },
+        "Subtype": { 
+            "description": "Range or Melee", 
+            "type": "string",
+            "enum":["None", "Sword", "Axe", "Bow", "Spear", "Dagger", "Staff", "Hammer", "Crossbow", "Fist", "Firearm", "Throwing", "Mace"]
+        },
+        "Element": { 
+            "description": "The element of the weapon, used to calculate damage and resistances", 
+            "type": "string",
+            "enum":["Physical", "Chi", "Fire", "Lightning", "Ice", "Mental"]
+        },
+        "Hand": { 
+            "description": "One hand or Two hands", 
+            "type": "string",
+            "enum":["OneHand", "TwoHands"]
+        },
+        "Value": { 
+            "description": "value of the weapon in money", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 50000
+        },
+        "BasePrecision": { 
+            "description": "The base precision bonus of the weapon", 
+            "type": "integer",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "BaseMinDam": { 
+            "description": "The basic minimum damage of the weapon", 
+            "type": "integer",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "BaseMaxDam": { 
+            "description": "The basic maximum damage of the weapon", 
+            "type": "integer",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "PrecisionRatio": { 
+            "description": "The multiplier applied to precision bonus", 
+            "type": "number",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "MinDamRatio": { 
+            "description": "The multiplier applied to min damage bonus", 
+            "type": "number",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "MaxDamRatio": { 
+            "description": "The multiplier applied to max damage bonus", 
+            "type": "number",
+            "minimum" : -100,
+            "maximum" : 1000
+        },
+        "StatDam1": { 
+            "description": "The first stat used to calculate damage bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },
+        "StatDam2": { 
+            "description": "The second stat used to calculate damage bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },
+        "StatPrecision1": { 
+            "description": "The first stat used to calculate precision bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },        
+        "StatPrecision2": { 
+            "description": "The second stat used to calculate precision bonus", 
+            "type": "string",
+            "enum":["Strength", "Intelligence", "Constitution", "Charisma", "Dexterity", "Agility", "Perception", "Power"]
+        },
+        "CriticScore": { 
+            "description": "the score needed in precision to perform a critical strike that doubles damages", 
+            "type": "integer",
+            "minimum" : 0,
+            "maximum" : 40
+        },
+        "OtherEffects": { 
+            "description": "Any other effects of the weapon, described with words and applied by GM", 
+            "type": "string"
+        }
+    }
+}

@@ -1,4 +1,5 @@
-import sqlite3 from "sqlite3";
+import sqlite3 from 'sqlite3';
+import { open } from 'sqlite';
 
 export function displayTables (db : sqlite3.Database, tableNames : string[]) {  //take in input an array of SQL instruction to execute in an asynchronous way
     
@@ -34,4 +35,20 @@ export function displayTables (db : sqlite3.Database, tableNames : string[]) {  
     })();
 }
 
-    
+export function safeNumber(X: any): number {
+  if (typeof X === "number" && !isNaN(X)) return X; // already a number
+  const parsed = Number(X);
+  return !isNaN(parsed) ? parsed : 0; // try to convert; fallback to 0
+}
+
+export function dbGet<T>(db: any, table: string, id: number): Promise<T | undefined> {
+  return new Promise((resolve, reject) => {
+    const sql = `SELECT * FROM ${table} WHERE id = ?`; // standard id-based query
+    db.get(sql, [id], (err: Error | null, row: T | undefined) => {
+      if (err) {
+        return reject(err);
+      }
+      resolve(row);
+    });
+  });
+}

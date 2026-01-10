@@ -246,6 +246,12 @@
             "minimum" : -1000,
             "maximum" : 1000
         },
+        "Martial": { 
+            "description": "The bonus Martial provided by the passive", 
+            "type": "integer",
+            "minimum" : -1000,
+            "maximum" : 1000
+        },
         "OtherEffect": { 
             "description": "Other effect of the equipment, such as bonus to a specific skill or ability", 
             "type": "string"

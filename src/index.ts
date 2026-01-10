@@ -5,10 +5,13 @@ import sqlite3 from "sqlite3";
 import { getdb, createNewEntry } from "./helpers/databaseHelpers";
 import 'dotenv/config'; 
 
-import { characterKeys } from "./data/ketList";
+import { characterKeys } from "./data/keyList";
 import { basicCharacter } from "./data/charactersInit";
 
 import { buildUpdate } from "./helpers/updateTable";
+
+import CharacterRoute from "./routes/CharacterRoute";
+import CharacterFullRoute from "./routes/characterFullRoute";
 
 const app = express();
 app.use(cors()); // Enable CORS for all routes
@@ -17,18 +20,26 @@ const db = getdb();
 
 app.use(bodyParser.json());
 
-app.get('/character/:id', (req :any, res:any) => {
-    const id = req.params.id;
-    const query = `SELECT * FROM charactersBase WHERE id = ?`;
-    db.get(query, [id], (err, row) => {
-        if (err) {
-            return res.status(500).send(err.message);
-        }
-        if (!row) {
-            return res.status(404).send('Item not found');
-        }
-        res.json(row);
-    });
+app.use('/', CharacterRoute);
+app.use('/', CharacterFullRoute);
+
+app.get('/inventory/:id', (req: any, res: any) => {
+  console.log("Fetching inventory for character ID:", req.params.id);
+  const id = req.params.id;
+  const query = `SELECT * FROM inventoryBase WHERE CharacterID = ?`;
+
+  db.all(query, [id], (err, rows) => {
+    if (err) {
+      return res.status(500).send(err.message);
+    }
+    if (!rows) {
+      return res.status(404).send('No inventory items found');
+    }
+    if (rows.length === 0) {
+      return res.json([]);
+    }
+    res.json(rows);
+  });
 });
 
 app.get('/characters/all', (req :any, res:any) => {
@@ -47,6 +58,21 @@ app.get('/characters/all', (req :any, res:any) => {
     });
 });
 
+app.get('/inventorys/all', (req :any, res:any) => {
+    console.log("Fetching all inventory items");
+    const query = `SELECT * FROM inventoryBase`;
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Error fetching all inventory items:', err.message);
+            return res.status(500).send(err.message);
+        }
+        if (!rows || rows.length === 0) {
+            return res.status(404).send('No items found');
+        }
+        res.json(rows);
+        console.log("Fetched characters:", rows);
+    });
+});
 
 app.get('/equipment/:id', (req :any, res:any) => {
     const { id } = req.params;
@@ -61,7 +87,6 @@ app.get('/equipment/:id', (req :any, res:any) => {
         res.json(row);
     });
 });
-
 
 // GET /equipments?ids=1,2,5   ==>  means res.query = { ids: "1,2,5" }
 app.get('/equipments', (req: any, res: any) => {
@@ -119,7 +144,6 @@ app.get('/equipments/all', (req: any, res: any) => {
     res.json(rows);
   });
 });
-
 
 app.get('/weapon/:id', (req :any, res:any) => {
     const { id } = req.params;
@@ -338,7 +362,6 @@ app.post('/charactercreate', (req: any, res: any) => {
   });
 });
 
-
 app.post('/inventoryupdate', (req: any, res: any) => {
     const {
       CharacterID,
@@ -455,6 +478,55 @@ app.post('/inventoryupdate', (req: any, res: any) => {
       });
     }
   });
+});
+
+app.get('/ennemies/all', (req :any, res:any) => {
+    console.log("Fetching all ennemies");
+    const query = `SELECT * FROM ennemiesBase`;
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Error fetching all ennemies:', err.message);
+            return res.status(500).send(err.message);
+        }
+        if (!rows || rows.length === 0) {
+            return res.status(404).send('No items found');
+        }
+        res.json(rows);
+        console.log("Fetched characters:", rows);
+    });
+});
+
+app.get('/loots/all', (req :any, res:any) => {
+    console.log("Fetching all loots");
+    const query = `SELECT * FROM lootsBase`;
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Error fetching all ennemies:', err.message);
+            return res.status(500).send(err.message);
+        }
+        if (!rows || rows.length === 0) {
+            return res.status(404).send('No items found');
+        }
+        res.json(rows);
+        console.log("Fetched characters:", rows);
+    });
+});
+
+app.get('/loot/:LootTypeID', (req :any, res:any) => {
+    console.log("Fetching all loots");
+    const { LootTypeID } = req.params;
+    const query = `SELECT * FROM lootsBase WHERE LootTypeID = ?`;
+    db.all(query, [LootTypeID], (err, rows) => {
+        if (err) {
+            console.error('Error fetching all loots:', err.message);
+            return res.status(500).send(err.message);
+        }
+        if (!rows || rows.length === 0) {
+            return res.status(404).send('No items found');
+        }
+        res.json(rows);
+        console.log("Fetched characters:", rows);
+    });
 });
 
 app.listen(port, () => {
