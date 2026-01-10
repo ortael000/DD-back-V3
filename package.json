@@ -5,6 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "tsx src/index.ts",
+    "build": "tsc",
     "setup": "tsx scripts/setupSqlite.ts",
     "initiateTables": "tsx scripts/initiateAllTable.ts",
     "displayTables": " tsx scripts/displayTable.ts",
