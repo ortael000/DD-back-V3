@@ -42,6 +42,7 @@ export function safeNumber(X: any): number {
 }
 
 export function dbGet<T>(db: any, table: string, id: number): Promise<T | undefined> {
+    //console.log(`Fetching from table ${table} id=${id}`);
   return new Promise((resolve, reject) => {
     const sql = `SELECT * FROM ${table} WHERE id = ?`; // standard id-based query
     db.get(sql, [id], (err: Error | null, row: T | undefined) => {
@@ -51,4 +52,23 @@ export function dbGet<T>(db: any, table: string, id: number): Promise<T | undefi
       resolve(row);
     });
   });
+}
+
+function dbAll(db: any, sql: string, params: any[] = []) {
+  return new Promise<any[]>((resolve, reject) => {
+    db.all(sql, params, (err: any, rows: any[]) => (err ? reject(err) : resolve(rows || [])));
+  });
+}
+
+export async function fetchByIds(db: any, table: string, ids: number[]) {
+  // remove invalid ids for the SQL query only
+  const uniqueIds = Array.from(new Set(ids.filter((x) => Number.isFinite(x) && x > 0)));
+  if (uniqueIds.length === 0) return new Map<number, any>();
+
+  const placeholders = uniqueIds.map(() => "?").join(",");
+  const rows = await dbAll(db, `SELECT * FROM ${table} WHERE id IN (${placeholders})`, uniqueIds);
+
+  const byId = new Map<number, any>();
+  for (const r of rows) byId.set(Number(r.id), r);
+  return byId;
 }

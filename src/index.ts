@@ -24,7 +24,7 @@ app.use('/', CharacterRoute);
 app.use('/', CharacterFullRoute);
 
 app.get('/inventory/:id', (req: any, res: any) => {
-  console.log("Fetching inventory for character ID:", req.params.id);
+  // console.log("Fetching inventory for character ID:", req.params.id);
   const id = req.params.id;
   const query = `SELECT * FROM inventoryBase WHERE CharacterID = ?`;
 
@@ -43,34 +43,34 @@ app.get('/inventory/:id', (req: any, res: any) => {
 });
 
 app.get('/characters/all', (req :any, res:any) => {
-    console.log("Fetching all characters");
+    // console.log("Fetching all characters");
     const query = `SELECT * FROM charactersBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            console.error('Error fetching all characters:', err.message);
+            // console.error('Error fetching all characters:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        // console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/inventorys/all', (req :any, res:any) => {
-    console.log("Fetching all inventory items");
+    // console.log("Fetching all inventory items");
     const query = `SELECT * FROM inventoryBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            console.error('Error fetching all inventory items:', err.message);
+            // console.error('Error fetching all inventory items:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        // console.log("Fetched characters:", rows);
     });
 });
 
@@ -161,7 +161,7 @@ app.get('/weapon/:id', (req :any, res:any) => {
 
 // GET /weapons?ids=1,2,5   ==>  means res.query = { ids: "1,2,5" }
 app.get('/weapons', (req: any, res: any) => {
-  console.log(req.query);
+  // console.log(req.query);
   // 1. Read the raw query string
   const idsParam = req.query.ids as string;
   if (!idsParam) {
@@ -312,7 +312,7 @@ app.post('/characterupdate', (req: any, res: any) => {
 
 app.post('/charactercreate', (req: any, res: any) => {
 
-  console.log('Received character creation data:', req.body);
+  // console.log('Received character creation data:', req.body);
   
   const { name, password } = req.body;
 
@@ -334,26 +334,26 @@ app.post('/charactercreate', (req: any, res: any) => {
 
   const sqlPasswordInstruction = `INSERT INTO characterPassword ("CharacterId", "Password") VALUES (?, ?)`;
 
-  console.log('SQL Instruction:', sqlInstruction);
-  console.log('Values:', values);
+  // console.log('SQL Instruction:', sqlInstruction);
+  // console.log('Values:', values);
 
   db.run(sqlInstruction, values, function (err: Error | null) {
     if (err) {
       return res.status(500).send(`Character insert error: ${err.message}`);
     }
 
-    console.log('Character created with ID:', this.lastID);
+    // console.log('Character created with ID:', this.lastID);
 
     const characterId = this.lastID;
     const valuesPassword = [characterId, password];
 
-    console.log('SQL Password Instruction:', sqlPasswordInstruction);
-    console.log('Values Password:', valuesPassword);
+    // console.log('SQL Password Instruction:', sqlPasswordInstruction);
+    // console.log('Values Password:', valuesPassword);
 
     // Second insert: user with character ID
     db.run(sqlPasswordInstruction, valuesPassword, function (err: Error | null) {
       if (err) {
-        console.error('Password insert error:', err.message);
+        // console.error('Password insert error:', err.message);
         return res.status(500).send(`User insert error: ${err.message}`);
       }
 
@@ -372,7 +372,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
       Name
   } = req.body;
 
-  console.log('Received inventory update data:', req.body);
+  // console.log('Received inventory update data:', req.body);
 
   // Basic validation
   if (
@@ -406,7 +406,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
      WHERE CharacterID = ? AND ObjectID = ?`;
   db.get(findSql, [charId, objId], (err, row) => {
     if (err) {
-      console.error('Select error:', err.message);
+      // console.error('Select error:', err.message);
       return res.status(500).json({ error: 'Database error' });
     }
 
@@ -420,7 +420,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
              AND ObjectID    = ?`;
         db.run(updSql, [qty, charId, objId], function (err) {
           if (err) {
-            console.error('Update error:', err.message);
+            // console.error('Update error:', err.message);
             return res.status(500).json({ error: 'Failed to update' });
           }
           res.json({
@@ -440,7 +440,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
              AND ObjectID    = ?`;
         db.run(delSql, [charId, objId], function (err) {
           if (err) {
-            console.error('Delete error:', err.message);
+            // console.error('Delete error:', err.message);
             return res.status(500).json({ error: 'Failed to delete' });
           }
           res.json({
@@ -465,7 +465,7 @@ app.post('/inventoryupdate', (req: any, res: any) => {
         VALUES (?,           ?,          ?,        ?,    ?,     ?)`;
       db.run(insSql, [charId, ObjectType, ObjectSubType, objId, Name, qty], function (err) {
         if (err) {
-          console.error('Insert error:', err.message);
+          // console.error('Insert error:', err.message);
           return res.status(500).json({ error: 'Failed to insert' });
         }
         res.status(201).json({
@@ -481,54 +481,54 @@ app.post('/inventoryupdate', (req: any, res: any) => {
 });
 
 app.get('/ennemies/all', (req :any, res:any) => {
-    console.log("Fetching all ennemies");
+    // console.log("Fetching all ennemies");
     const query = `SELECT * FROM ennemiesBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            console.error('Error fetching all ennemies:', err.message);
+            // console.error('Error fetching all ennemies:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        // console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/loots/all', (req :any, res:any) => {
-    console.log("Fetching all loots");
+    // console.log("Fetching all loots");
     const query = `SELECT * FROM lootsBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            console.error('Error fetching all ennemies:', err.message);
+            // console.error('Error fetching all ennemies:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        // console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/loot/:LootTypeID', (req :any, res:any) => {
-    console.log("Fetching all loots");
+    // console.log("Fetching all loots");
     const { LootTypeID } = req.params;
     const query = `SELECT * FROM lootsBase WHERE LootTypeID = ?`;
     db.all(query, [LootTypeID], (err, rows) => {
         if (err) {
-            console.error('Error fetching all loots:', err.message);
+            // console.error('Error fetching all loots:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        // console.log("Fetched characters:", rows);
     });
 });
 
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+    // console.log(`Server is running on http://localhost:${port}`);
 });

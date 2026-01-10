@@ -10,17 +10,23 @@ export async function calculateCharacterFull(db: any, id: number): Promise<Chara
   if (!base) {
     throw new Error(`Character with ID ${id} not found`);
   }
-  const equipments = await getEquipments(db, base);
-  const weapons = await getWeapons(db, base);
-  const passives = await getPassives(db, base);
-  const skills = await getSkills(db, base);
+
+  const equipmentsObject = await getEquipments(db, base);
+  const weaponsObject = await getWeapons(db, base);
+  const passivesObject = await getPassives(db, base);
+  const skillsObject = await getSkills(db, base);
+
+  const equipments: EquipmentType[] = Object.values(equipmentsObject);
+  const weapons: WeaponBaseType[] = Object.values(weaponsObject);
+  const passives: PassiveType[] = Object.values(passivesObject);
+  const skills: SkillBaseType[] = Object.values(skillsObject);
 
 
-  console.log("base", base);
+  // console.log("base", base);
   console.log("equipment", equipments);
   console.log("weapons", weapons);
-  console.log("passives", passives);
-  console.log("skills", skills);
+  // console.log("passives", passives);
+  // console.log("skills", skills);
 
   const flatBonus = calculateFlatBonus(base, equipments, passives); // 3.3 Flat-bonus aggregator (equip + passive)
 
@@ -121,64 +127,47 @@ async function getCharacterBase(db: any, id: number) {
   return dbGet<CharacterBasetype>(db, `charactersBase`, id);
 }
 
-async function getEquipments(db: any, base: CharacterBasetype): Promise<EquipmentType[]> {
-  const ids = [
-    base.equipmentHelmetID, base.equipmentArmorID, base.equipmentPantsID,
-    base.equipmentBeltID, base.equipmentGauntletID, base.equipmentBootsID,
-    base.equipmentRing1ID, base.equipmentRing2ID, base.equipmentNecklaceID, base.equipmentShieldID,
-  ];
-  const placeholders = ids.map(() => '?').join(',');
-  const equipmentsRows = await Promise.all(ids.map(id => {
-    const equipment = dbGet<EquipmentType>(db, `equipmentsBase`, id);
-    if (!equipment) {
-      return Promise.resolve(emptyEquipmentBase); // Return empty equipment if not found
-    } else {
-      return equipment as Promise<EquipmentType>;
-    }
-  }));
-
-  return equipmentsRows;
-}
-  
-async function getWeapons(db: any, base: CharacterBasetype): Promise<WeaponBaseType[]> {
-  const ids = [base.Weapon1ID, base.Weapon2ID, base.Weapon3ID];
-
-  const weapons = await Promise.all(ids.map(id => {
-    const weapon = dbGet<WeaponBaseType>(db, `weaponsBase`, id);
-    if (!weapon) {
-      return Promise.resolve(emptyWeaponBase); // Return empty weapon if not found
-    } else {
-      return weapon as Promise<WeaponBaseType>;
-    }
-  }));
-  return weapons;
+async function getEquipments(db: any, base: CharacterBasetype) {
+  return {
+    equipmentHelmetID:   (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentHelmetID))   ?? emptyEquipmentBase,
+    equipmentArmorID:    (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentArmorID))    ?? emptyEquipmentBase,
+    equipmentPantsID:    (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentPantsID))    ?? emptyEquipmentBase,
+    equipmentBeltID:     (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentBeltID))     ?? emptyEquipmentBase,
+    equipmentGauntletID: (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentGauntletID)) ?? emptyEquipmentBase,
+    equipmentBootsID:    (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentBootsID))    ?? emptyEquipmentBase,
+    equipmentRing1ID:    (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentRing1ID))    ?? emptyEquipmentBase,
+    equipmentRing2ID:    (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentRing2ID))    ?? emptyEquipmentBase,
+    equipmentNecklaceID: (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentNecklaceID)) ?? emptyEquipmentBase,
+    equipmentShieldID:   (await dbGet<EquipmentType>(db, "equipmentsBase", base.equipmentShieldID))   ?? emptyEquipmentBase,
+  };
 }
 
-async function getPassives(db: any, base: CharacterBasetype): Promise<PassiveType[]> {
-
-  const ids = [base.passive1ID, base.passive2ID, base.passive3ID, base.passive4ID];
-  const passives = await Promise.all(ids.map(id => {
-    const passive = dbGet<PassiveType>(db, `passivesBase`, id);
-    if (!passive) {
-      return Promise.resolve(emptyPassiveBase); // Return empty passive if not found
-    } else {
-      return passive as Promise<PassiveType>;
-    }
-  }));
-  return passives;
+async function getWeapons(db: any, base: CharacterBasetype) {
+  return {
+    Weapon1ID: (await dbGet<WeaponBaseType>(db, "weaponsBase", base.Weapon1ID)) ?? emptyWeaponBase,
+    Weapon2ID: (await dbGet<WeaponBaseType>(db, "weaponsBase", base.Weapon2ID)) ?? emptyWeaponBase,
+    Weapon3ID: (await dbGet<WeaponBaseType>(db, "weaponsBase", base.Weapon3ID)) ?? emptyWeaponBase,
+  };
+}
+      
+async function getPassives(db: any, base: CharacterBasetype) {
+  return {
+    passive1ID: (await dbGet<PassiveType>(db, "passivesBase", base.passive1ID)) ?? emptyPassiveBase,
+    passive2ID: (await dbGet<PassiveType>(db, "passivesBase", base.passive2ID)) ?? emptyPassiveBase,
+    passive3ID: (await dbGet<PassiveType>(db, "passivesBase", base.passive3ID)) ?? emptyPassiveBase,
+    passive4ID: (await dbGet<PassiveType>(db, "passivesBase", base.passive4ID)) ?? emptyPassiveBase,
+  };
 }
 
-async function getSkills(db: any, base: CharacterBasetype): Promise<SkillBaseType[]> {
-  const ids = [base.skill1ID, base.skill2ID, base.skill3ID, base.skill4ID, base.skill5ID, base.skill6ID];
-  const skills = await Promise.all(ids.map(id => {
-    const skill = dbGet<SkillBaseType>(db, `skillsBase`, id);
-    if (!skill) {
-      return Promise.resolve(emptySkillBase); // Return empty skill if not found
-    } else {
-      return skill as Promise<SkillBaseType>;
-    }
-  }));
-  return skills;
+async function getSkills(db: any, base: CharacterBasetype) {
+  return {
+    skill1ID: (await dbGet<SkillBaseType>(db, "skillsBase", base.skill1ID)) ?? emptySkillBase,
+    skill2ID: (await dbGet<SkillBaseType>(db, "skillsBase", base.skill2ID)) ?? emptySkillBase,
+    skill3ID: (await dbGet<SkillBaseType>(db, "skillsBase", base.skill3ID)) ?? emptySkillBase,
+    skill4ID: (await dbGet<SkillBaseType>(db, "skillsBase", base.skill4ID)) ?? emptySkillBase,
+    skill5ID: (await dbGet<SkillBaseType>(db, "skillsBase", base.skill5ID)) ?? emptySkillBase,
+    skill6ID: (await dbGet<SkillBaseType>(db, "skillsBase", base.skill6ID)) ?? emptySkillBase,
+  };
 }
 
 // 3.1 Character level & XP to next (exact same loop) :contentReference[oaicite:5]{index=5}
@@ -484,7 +473,6 @@ function calculateWeaponFull(weapons: WeaponBaseType[], fullCharacteristics: Cha
     }
     weaponsFull.push(weaponFull);
 
-    weaponsFull.sort((a, b) => a.id - b.id); // Sort by ID to ensure consistent order
   }
     return weaponsFull
 }
