@@ -509,3 +509,10 @@ export interface InventoryItem {
   Name: string ;
   Quantity: number;
 }
+
+export type ObjectType = {
+  Name: string;
+  Value: number;
+  Description: string;
+  Effect: string;
+};

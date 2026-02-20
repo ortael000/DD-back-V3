@@ -1,0 +1,29 @@
+{ "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "accessoriesBase",
+  "description": "Schema for consumable objects (potions, etc.) in battleScissor",
+  "type": "array",
+  "properties": {
+    "Name": {
+      "description": "Unique name of the object (e.g., Minor health potion)",
+      "type": "string",
+      "primaryKey": true
+    },
+    "Value": {
+      "description": "Cost/value of the object",
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000,
+      "primaryKey": false
+    },
+    "Description": {
+      "description": "Lore/description text shown to the user",
+      "type": "string",
+      "primaryKey": false
+    },
+    "Effect": {
+      "description": "Rules text for what happens when used",
+      "type": "string",
+      "primaryKey": false
+    }
+  }
+}
