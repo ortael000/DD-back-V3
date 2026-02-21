@@ -508,9 +508,10 @@ app.get('/loots/all', (req :any, res:any) => {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        console.log("Fetched loots:", rows);
     });
 });
+
 
 app.get('/loot/:LootTypeID', (req :any, res:any) => {
     console.log("Fetching all loots");
@@ -525,7 +526,23 @@ app.get('/loot/:LootTypeID', (req :any, res:any) => {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
+        console.log("Fetched loots:", rows);
+    });
+});
+
+app.get('/accessories/all', (req :any, res:any) => {
+    console.log("Fetching all accessories");
+    const query = `SELECT * FROM accessoriesBase`;
+    db.all(query, [], (err, rows) => {
+        if (err) {
+            console.error('Error fetching all accessories:', err.message);
+            return res.status(500).send(err.message);
+        }
+        if (!rows || rows.length === 0) {
+            return res.status(404).send('No items found');
+        }
+        res.json(rows);
+        console.log("Fetched accessories:", rows);
     });
 });
 
