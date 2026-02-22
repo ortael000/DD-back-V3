@@ -546,6 +546,47 @@ app.get('/accessories/all', (req :any, res:any) => {
     });
 });
 
+app.get('/accessory/:id', (req :any, res:any) => {
+    const { id } = req.params;
+    const query = `SELECT * FROM accessoriesBase WHERE id = ?`;
+    db.get(query, [id], (err, row) => {
+        if (err) {
+            return res.status(500).send(err.message);
+        }
+        if (!row) {
+            return res.status(404).send('Item not found');
+        }
+        res.json(row);
+    });
+});
+
+
+app.post('/accessories/by-ids', (req: any, res: any) => {
+  const { ids } = req.body;
+
+  if (!Array.isArray(ids) || ids.length === 0) {
+    return res.status(400).json({ error: "ids must be a non-empty array" });
+  }
+
+  // Create placeholders (?, ?, ?, ...)
+  const placeholders = ids.map(() => '?').join(',');
+
+  const query = `
+    SELECT * 
+    FROM accessoriesBase 
+    WHERE id IN (${placeholders})
+  `;
+
+  db.all(query, ids, (err, rows) => {
+    if (err) {
+      console.error("Error fetching accessories by ids:", err.message);
+      return res.status(500).json({ error: err.message });
+    }
+
+    res.json(rows);
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

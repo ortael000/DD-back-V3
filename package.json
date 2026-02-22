@@ -9,6 +9,7 @@
     "setup": "tsx scripts/setupSqlite.ts",
     "initiateTables": "tsx scripts/initiateAllTable.ts",
     "displayTables": " tsx scripts/displayTable.ts",
+    "displayonetable": " tsx scripts/displayOneTable.ts",
     "displayInventory": " tsx scripts/displayInventoryTable.ts"
   },
   "author": "",

@@ -113,6 +113,8 @@ export function displayAllTableOfDb (db: sqlite3.Database){
         });
 }
 
+
+
 export function executeSQLs (db: sqlite3.Database, sqlInstructions : string[]) {  //take in input an array of SQL instruction to execute in an asynchronous way
     // console.log("Executing SQL instructions...");
     const executeSQL = (sql : string) => {     // First we create a function that generate a promise to execute the sql statement and manage the promise resolution

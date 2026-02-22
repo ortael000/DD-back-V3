@@ -78,5 +78,8 @@ export const lootsBase = [
 { LootTypeID: 6, LootTypeName: "\"Bear\"", ObjectID: 33, ObjectType: "\"accessory\"", ObjectName: "\"Bear fur\"", chance: 50 },
 { LootTypeID: 7, LootTypeName: "\"Water-elemental\"", ObjectID: 34, ObjectType: "\"accessory\"", ObjectName: "\"Small water jewel\"", chance: 80 },
 { LootTypeID: 7, LootTypeName: "\"Water-elemental\"", ObjectID: 35, ObjectType: "\"accessory\"", ObjectName: "\"Pure water jewel\"", chance: 40 },
-{ LootTypeID: 7, LootTypeName: "\"Water-elemental\"", ObjectID: 36, ObjectType: "\"accessory\"", ObjectName: "\"Luminescent water jewel\"", chance: 10 }
+{ LootTypeID: 7, LootTypeName: "\"Water-elemental\"", ObjectID: 36, ObjectType: "\"accessory\"", ObjectName: "\"Luminescent water jewel\"", chance: 10 },
+{ LootTypeID: 8, LootTypeName: "\"Stone-elemental\"", ObjectID: 37, ObjectType: "\"accessory\"", ObjectName: "\"Small rocky cristal\"", chance: 80 },
+{ LootTypeID: 8, LootTypeName: "\"Stone-elemental\"", ObjectID: 38, ObjectType: "\"accessory\"", ObjectName: "\"Pure rocky cristal\"", chance: 40 },
+{ LootTypeID: 8, LootTypeName: "\"Stone-elemental\"", ObjectID: 39, ObjectType: "\"accessory\"", ObjectName: "\"Luminescent rocky cristal\"", chance: 10 }
 ]
