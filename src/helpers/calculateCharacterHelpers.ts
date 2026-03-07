@@ -45,7 +45,7 @@ export async function calculateCharacterFull(db: any, id: number): Promise<Chara
     }
 
     const maxHP = 10 + fullCharacteristics.Constitution.Modifier * 4  + fullCharacteristics.Strength.Modifier  + findCharacterLevel(base.XpPoint).level * 2 + flatBonus.HitPoint;
-    const maxMana = 6 + fullCharacteristics.Power.Modifier * 6 + fullCharacteristics.Intelligence.Modifier + fullCharacteristics.Constitution.Modifier+ levelInfo.level * 2 + flatBonus.Mana;
+    const maxMana = 12 + fullCharacteristics.Power.Modifier * 6 + fullCharacteristics.Intelligence.Modifier + fullCharacteristics.Constitution.Modifier*2+ levelInfo.level * 2 + flatBonus.Mana;
     const maxMovement = 5 + fullCharacteristics.Agility.Modifier +  flatBonus.Movement;
     const fullWeapons = calculateWeaponFull(weapons, fullCharacteristics, equipments, passives);
     const initiative = Math.floor(fullCharacteristics.Perception.Modifier/3 + fullCharacteristics.Agility.Modifier/4) + flatBonus.Initiative;
