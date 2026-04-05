@@ -11,12 +11,13 @@ import { lootsBase } from "../src/data/LootsDataBase";
 import {accesoriesBase} from "../src/data/accesoriesDataBase";
 
 import { basicCharacter } from "../src/data/charactersInit";
+import path from "path";
 
+const charSchemaPath = path.join(process.cwd(), "dataBaseShema") + path.sep;
  
 console.log("on lance initiate all table")
 
 const db = getdb()
-const charSchemaPath = process.env.Character_Table_JSON_SCHEMA_PATH as string
 
 export const allTables = [
    // {name : "charactersBase", Schema : charSchemaPath + "charactersBase.json", database : [basicCharacter] },
