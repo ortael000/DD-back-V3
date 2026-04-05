@@ -38,5 +38,4 @@ export const accesoriesBase = [
 { Name: "\"Small rocky cristal\"", Value: 40, Description: "\"The core of a small stone elemental, contain some magic for strength and resistance\"", Effect: "\"Alchemy: 3 constitution point\"" },
 { Name: "\"Pure rocky cristal\"", Value: 90, Description: "\"The core of a powerfull stone elemental, contain some magic for strength and resistance\"", Effect: "\"Alchemy: 7 constitution point\"" },
 { Name: "\"Luminescent rocky cristal\"", Value: 220, Description: "\"The core of a stone elemental, contain some magic for strength and resistance\"", Effect: "\"Alchemy: 15 constitution point\"" }
-
 ]
