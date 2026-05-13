@@ -10,7 +10,7 @@ export function displayTables (db : sqlite3.Database, tableNames : string[]) {  
                     reject(err.message);
                 } else {
                     rows.forEach((row) => {
-                        console.log(JSON.stringify(row)); // Log each row to the console
+                        // Display each row
                     });
                     resolve(`SQL executed: ${tableName}`);
                 }
@@ -27,7 +27,6 @@ export function displayTables (db : sqlite3.Database, tableNames : string[]) {  
                 if (err) {
                     console.error(err.message);
                 }
-                console.log('Database connection closed.');
             });
         } catch (err) {
             console.error(err);
@@ -42,7 +41,6 @@ export function safeNumber(X: any): number {
 }
 
 export function dbGet<T>(db: any, table: string, id: number): Promise<T | undefined> {
-    //console.log(`Fetching from table ${table} id=${id}`);
   return new Promise((resolve, reject) => {
     const sql = `SELECT * FROM ${table} WHERE id = ?`; // standard id-based query
     db.get(sql, [id], (err: Error | null, row: T | undefined) => {

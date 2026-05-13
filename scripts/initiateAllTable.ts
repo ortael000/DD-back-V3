@@ -15,8 +15,6 @@ import path from "path";
 
 const charSchemaPath = path.join(process.cwd(), "dataBaseShema") + path.sep;
  
-console.log("on lance initiate all table")
-
 const db = getdb()
 
 export const allTables = [
@@ -40,7 +38,6 @@ for (let i = 0; i < allTables.length; i++) {
 
 for (let i = 0; i < allTables.length; i++) {
     sqlInstruction.push(createTableFromStructure(allTables[i].Schema)) 
-    console.log("create table " + allTables[i].name)
 }
 
 for (let i =0; i < allTables.length; i++) {

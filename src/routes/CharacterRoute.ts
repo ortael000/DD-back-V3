@@ -6,8 +6,6 @@ const router = Router();
 // Example route
 router.get('/character/:id', async (req, res) => {
 
-    console.log("Fetching character with ID:", req.params.id);
-
     const db = getdb();
     const id = req.params.id;
     const query = `SELECT * FROM charactersBase WHERE id = ?`;

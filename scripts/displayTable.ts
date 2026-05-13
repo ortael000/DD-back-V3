@@ -6,11 +6,7 @@ import { table } from "console";
 
 const allTablename = allTables.map(table => table.name);
 
-console.log("on lance initiate all table")
-
 const db = getdb()
-
-console.log("la liste des db est la suivante:")
 displayAllTableOfDb(db);
 
 displayTables(db,allTablename)

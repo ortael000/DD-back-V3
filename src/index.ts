@@ -24,7 +24,6 @@ app.use('/', CharacterRoute);
 app.use('/', CharacterFullRoute);
 
 app.get('/inventory/:id', (req: any, res: any) => {
-  // console.log("Fetching inventory for character ID:", req.params.id);
   const id = req.params.id;
   const query = `SELECT * FROM inventoryBase WHERE CharacterID = ?`;
 
@@ -43,34 +42,28 @@ app.get('/inventory/:id', (req: any, res: any) => {
 });
 
 app.get('/characters/all', (req :any, res:any) => {
-    // console.log("Fetching all characters");
     const query = `SELECT * FROM charactersBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            // console.error('Error fetching all characters:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        // console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/inventorys/all', (req :any, res:any) => {
-    // console.log("Fetching all inventory items");
     const query = `SELECT * FROM inventoryBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
-            // console.error('Error fetching all inventory items:', err.message);
             return res.status(500).send(err.message);
         }
         if (!rows || rows.length === 0) {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        // console.log("Fetched characters:", rows);
     });
 });
 
@@ -161,7 +154,6 @@ app.get('/weapon/:id', (req :any, res:any) => {
 
 // GET /weapons?ids=1,2,5   ==>  means res.query = { ids: "1,2,5" }
 app.get('/weapons', (req: any, res: any) => {
-  // console.log(req.query);
   // 1. Read the raw query string
   const idsParam = req.query.ids as string;
   if (!idsParam) {
@@ -312,8 +304,6 @@ app.post('/characterupdate', (req: any, res: any) => {
 
 app.post('/charactercreate', (req: any, res: any) => {
 
-  // console.log('Received character creation data:', req.body);
-  
   const { name, password } = req.body;
 
   if (!name || !password) {
@@ -334,26 +324,17 @@ app.post('/charactercreate', (req: any, res: any) => {
 
   const sqlPasswordInstruction = `INSERT INTO characterPassword ("CharacterId", "Password") VALUES (?, ?)`;
 
-  // console.log('SQL Instruction:', sqlInstruction);
-  // console.log('Values:', values);
-
   db.run(sqlInstruction, values, function (err: Error | null) {
     if (err) {
       return res.status(500).send(`Character insert error: ${err.message}`);
     }
 
-    // console.log('Character created with ID:', this.lastID);
-
     const characterId = this.lastID;
     const valuesPassword = [characterId, password];
-
-    // console.log('SQL Password Instruction:', sqlPasswordInstruction);
-    // console.log('Values Password:', valuesPassword);
 
     // Second insert: user with character ID
     db.run(sqlPasswordInstruction, valuesPassword, function (err: Error | null) {
       if (err) {
-        // console.error('Password insert error:', err.message);
         return res.status(500).send(`User insert error: ${err.message}`);
       }
 
@@ -371,8 +352,6 @@ app.post('/inventoryupdate', (req: any, res: any) => {
       ObjectSubType,
       Name
   } = req.body;
-
-  // console.log('Received inventory update data:', req.body);
 
   // Basic validation
   if (
@@ -406,7 +385,6 @@ app.post('/inventoryupdate', (req: any, res: any) => {
      WHERE CharacterID = ? AND ObjectID = ?`;
   db.get(findSql, [charId, objId], (err, row) => {
     if (err) {
-      // console.error('Select error:', err.message);
       return res.status(500).json({ error: 'Database error' });
     }
 
@@ -481,7 +459,6 @@ app.post('/inventoryupdate', (req: any, res: any) => {
 });
 
 app.get('/ennemies/all', (req :any, res:any) => {
-    console.log("Fetching all ennemies");
     const query = `SELECT * FROM ennemiesBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
@@ -492,12 +469,10 @@ app.get('/ennemies/all', (req :any, res:any) => {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched characters:", rows);
     });
 });
 
 app.get('/loots/all', (req :any, res:any) => {
-    console.log("Fetching all loots");
     const query = `SELECT * FROM lootsBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
@@ -508,13 +483,11 @@ app.get('/loots/all', (req :any, res:any) => {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched loots:", rows);
     });
 });
 
 
 app.get('/loot/:LootTypeID', (req :any, res:any) => {
-    console.log("Fetching all loots");
     const { LootTypeID } = req.params;
     const query = `SELECT * FROM lootsBase WHERE LootTypeID = ?`;
     db.all(query, [LootTypeID], (err, rows) => {
@@ -526,12 +499,10 @@ app.get('/loot/:LootTypeID', (req :any, res:any) => {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched loots:", rows);
     });
 });
 
 app.get('/accessories/all', (req :any, res:any) => {
-    console.log("Fetching all accessories");
     const query = `SELECT * FROM accessoriesBase`;
     db.all(query, [], (err, rows) => {
         if (err) {
@@ -542,7 +513,6 @@ app.get('/accessories/all', (req :any, res:any) => {
             return res.status(404).send('No items found');
         }
         res.json(rows);
-        console.log("Fetched accessories:", rows);
     });
 });
 
@@ -588,5 +558,4 @@ app.post('/accessories/by-ids', (req: any, res: any) => {
 });
 
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
 });

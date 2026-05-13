@@ -6,8 +6,6 @@ import { table } from "console";
 
 const allTablename = allTables.map(table => table.name);
 
-console.log("on lance initiate inventory table")
-
 const db = getdb()
 
 

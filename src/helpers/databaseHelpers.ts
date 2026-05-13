@@ -7,7 +7,6 @@ export function getdb() {
     const dbPath = process.env.SQLITE_DB_FILE_PATH;   // access the path to the sql data base in a absolute way, by going to the environment variable. 
 
     if (!dbPath) {
-        console.log("SQLITE_DB_FILE_PATH is not defined in env");
         throw new Error ("Eh bah non!")
         
     }
@@ -18,14 +17,13 @@ export function getdb() {
 
 export function consoleLogtableContent (db : sqlite3.Database, tableName: string) {   // input ( la database sql qu'on veut lire, le nom de la table) output : genere un console log de la table demandee
 
-    console.log("display the table" + tableName )
     db.all("SELECT * FROM "+ tableName, [], (err, rows) => {
         if (err) {
             throw err; // Handle error appropriately
         }
         // rows is an array of objects representing the records
         rows.forEach((row) => {
-            console.log(JSON.stringify(row)); // Log each row to the console
+            // Display each row
         });
     });
 }
@@ -36,7 +34,7 @@ export function consoleLogTableStructure (db : sqlite3.Database, tableName: stri
         if (err) { 
             throw err;
          } rows.forEach((row : any ) => {
-             console.log(`Column: ${row.name}, Type: ${row.type}, Not Null: ${row.notnull}, Default Value: ${row.dflt_value}, Primary Key: ${row.pk}`); 
+             // Display column info
             }); 
         });
 }
@@ -72,7 +70,6 @@ export function createTableFromStructure (jsonSchemaPath : string) {    // A fun
 
 export function createNewEntry(tableName: string,  newEntry : any) {
 
-   console.log("create new entry in the table " + tableName + " with the following data: " + JSON.stringify(newEntry))
     let sqlInstruction : string = "INSERT INTO " + tableName + " (";
     
     let keys = Object.keys(newEntry); 
@@ -108,7 +105,7 @@ export function displayAllTableOfDb (db: sqlite3.Database){
     let sql = `SELECT name FROM sqlite_master WHERE type='table'`; // Execute the query and display the results 
     db.all(sql, [], (err, rows : any[]) => { 
         if (err) { throw err; } rows.forEach((row) => {
-             console.log(row.name); 
+             // Display table name
             }); 
         });
 }
@@ -116,7 +113,6 @@ export function displayAllTableOfDb (db: sqlite3.Database){
 
 
 export function executeSQLs (db: sqlite3.Database, sqlInstructions : string[]) {  //take in input an array of SQL instruction to execute in an asynchronous way
-    // console.log("Executing SQL instructions...");
     const executeSQL = (sql : string) => {     // First we create a function that generate a promise to execute the sql statement and manage the promise resolution
         return new Promise((resolve, reject) => {
             db.run(sql, (err:any) => {
@@ -132,15 +128,12 @@ export function executeSQLs (db: sqlite3.Database, sqlInstructions : string[]) {
     (async () => {       // Then we create a asynch function that run the sql instruction one afer the others
         try {
             for (let sql of sqlInstructions) {
-                // console.log(`Executing SQL: ${sql}`);
                 const result = await executeSQL(sql);
-                console.log(result);
             }
             db.close((err:any) => {
                 if (err) {
                     console.error(err.message);
                 }
-                console.log('Database connection closed.');
             });
         } catch (err) {
             console.error(err);
@@ -148,16 +141,15 @@ export function executeSQLs (db: sqlite3.Database, sqlInstructions : string[]) {
     })();
 }
 
-export function displayTables (db : sqlite3.Database, tableNames : string[]) {  // take in input a array of string (of table names) and console.log the content in those table in an asynchronous way
+export function displayTables (db : sqlite3.Database, tableNames : string[]) {  // take in input a array of string (of table names) and display the content in those table in an asynchronous way
     const displayTable = (tableName : string) => {     // First we create a function that generate a promise to execute the sql statement and manage the promise resolution
         return new Promise((resolve, reject) => {
             db.all("SELECT * FROM "+ tableName, [], (err, rows) => {
                 if (err) {
                     reject(err.message);
                 } else {
-                    console.log(" // The content of the table " + tableName + " is: //")
                     rows.forEach((row) => {    // rows is an array of objects representing the records
-                        console.log(JSON.stringify(row)); // Log each row to the console
+                        // Display each row
                     });
                     resolve(`SQL executed: ${tableName}`);
                 }
@@ -173,7 +165,6 @@ export function displayTables (db : sqlite3.Database, tableNames : string[]) {  
                 if (err) {
                     console.error(err.message);
                 }
-                console.log('Database connection closed.');
             });
         } catch (err) {
             console.error(err);

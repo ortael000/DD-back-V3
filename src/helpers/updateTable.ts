@@ -3,8 +3,6 @@ type Updates = Record<string, string | number | null>;
 export function buildUpdate(table: string, id: number, updates: Updates, allowedColumns: string[]) {
   // Keep only whitelisted columns
 
-  console.log('Updates received:', updates);
-
   const entries = Object.entries(updates).filter(([key]) => allowedColumns.includes(key));
 
   if (entries.length === 0) {
